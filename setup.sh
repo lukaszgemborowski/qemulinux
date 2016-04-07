@@ -95,7 +95,8 @@ function build_initramfs {
  
 mount -t proc none /proc
 mount -t sysfs none /sys
- 
+mknod /dev/i2c-0 c 89 0
+
 echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
  
 exec /bin/sh
