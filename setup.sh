@@ -51,6 +51,12 @@ function build_linux {
         cd -
 }
 
+function menuconfig_linux {
+        cd src/linux
+        make O=../../tmp/linux ARCH=arm menuconfig
+        cd -
+}
+
 function configure_linux {
         cp config tmp/linux/.config
 }
