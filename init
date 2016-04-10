@@ -1,0 +1,10 @@
+#!/bin/sh
+ 
+mount -t proc none /proc
+mount -t sysfs none /sys
+mknod /dev/i2c-0 c 89 0
+mknod -m 660 /dev/mem c 1 1
+
+echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
+  
+exec /bin/sh

@@ -90,17 +90,7 @@ function build_qemu {
 function build_initramfs {
         cd tmp/initramfs
         mkdir -pv {bin,sbin,etc,proc,sys,usr/{bin,sbin}}
-        cat > init << EOF
-#!/bin/sh
- 
-mount -t proc none /proc
-mount -t sysfs none /sys
-mknod /dev/i2c-0 c 89 0
-
-echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
- 
-exec /bin/sh
-EOF
+        cp ../../init .
         chmod +x init
         cp -av ../../tmp/busybox/_install/* .
         find . -print0 \
