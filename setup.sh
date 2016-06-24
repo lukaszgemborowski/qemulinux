@@ -6,18 +6,6 @@ BUILDROOT_URL="https://buildroot.org/downloads/buildroot-2016.05.tar.bz2"
 QEMU_PKG="qemu-2.5.1.tar.bz2"
 BUILDROOT_PKG="buildroot-2016.05.tar.bz2"
 
-if [ -z "$CC_PREFIX" ]
-then
-    unset CC_PREFIX
-    export CC_PREFIX="/usr/bin/arm-linux-gnueabi-"
-    echo "using default CC_PREFIX=$CC_PREFIX"
-else
-    echo "using provided CC_PREFIX=$CC_PREFIX"
-    cctmp=$CC_PREFIX
-    unset CC_PREFIX
-    export CC_PREFIX=$cctmp
-fi
-
 function prepare_dirs {
 	mkdir -p srcdir
 	mkdir -p src
